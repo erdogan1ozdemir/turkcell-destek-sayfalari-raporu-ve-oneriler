@@ -10,7 +10,18 @@
   --green:#1F9D57; --green-wash:#DFF5E8; --red:#D8463C; --red-wash:#FDE6E4;
   --gold:#FFD400; --ink:#16233F; --muted:#5A6783; --line:#E4EAF4;
   --bg:#F3F6FC; --card:#FFFFFF; --grey:#E9EEFB;
-  --appbar:64px;
+  --appbar:56px; --maxw:1640px; --nav-w:272px;
+  --deep:#0D1C3B; --ink-3:#8D99B2; --line-soft:#EEF2F9;
+  --shadow-h:0 10px 30px rgba(12,27,33,.10),0 3px 8px rgba(12,27,33,.05);
+  --zebra:#F7F9FD; --th-bg:#0A2150;
+}
+:root[data-theme="dark"]{
+  --coral:#7AA2FF; --coral-deep:#A8C2FF; --coral-tint:#16223F;
+  --green:#54BE86; --green-wash:#12301F; --red:#E27F76; --red-wash:#331715;
+  --gold:#D9A441; --ink:#DBE3F2; --muted:#9FADC7; --ink-3:#74809A;
+  --line:#243352; --line-soft:#1A2740; --bg:#0A1020; --card:#111A2E; --grey:#16223A;
+  --teal:#0A1020; --navy:#7AA2FF; --deep:#E8EEFB;
+  --shadow-h:0 10px 30px rgba(0,0,0,.55); --zebra:#16223A; --th-bg:#1D2C48;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -25,43 +36,62 @@ h1,h2,h3,h4{font-family:'Bricolage Grotesque','Outfit',Arial,sans-serif;line-hei
 a{color:var(--coral-deep)}
 a:hover{text-decoration:underline}
 
-.appbar{position:sticky;top:0;z-index:60;background:var(--teal);color:#fff;
-  height:var(--appbar);display:flex;align-items:center;gap:18px;padding:0 22px;
-  box-shadow:0 1px 0 rgba(0,0,0,.14)}
-.logos{display:flex;align-items:center;gap:16px}
-.logo-cell{display:flex;align-items:center;gap:9px}
-.logo-cell span{font-size:9.5px;letter-spacing:.11em;color:rgba(255,255,255,.62);
-  text-transform:none;font-weight:600}
-.logo-cell img{display:block}
-.logo-tc{height:30px;background:#fff;border-radius:7px;padding:3px}
-.logo-ib{height:19px;filter:brightness(0) invert(1)}
-.logo-sep{width:1px;height:26px;background:rgba(255,255,255,.22)}
-.appbar-title{font-family:'Bricolage Grotesque','Outfit',sans-serif;font-size:14.5px;
-  font-weight:600;margin-left:auto;color:rgba(255,255,255,.9);text-align:right}
-.appbar-title b{display:block;font-size:11px;font-weight:500;color:rgba(255,255,255,.55)}
+.appbar{position:sticky;top:0;z-index:60;
+  background:color-mix(in srgb,var(--card) 88%,transparent);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+.appbar__in{max-width:var(--maxw);margin:0 auto;padding:11px 26px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand img{height:30px;width:auto;display:block;background:#fff;border-radius:8px;padding:3px;
+  border:1px solid var(--line)}
+.brand__txt{display:flex;flex-direction:column;line-height:1.16;min-width:0}
+.brand__txt b{font-family:'Bricolage Grotesque','Outfit',sans-serif;font-size:15px;
+  font-weight:700;color:var(--deep);letter-spacing:-.01em}
+.brand__txt small{font-size:11.6px;color:var(--muted);font-weight:500}
+.appbar__meta{display:flex;align-items:center;gap:8px;margin-left:auto;flex-wrap:wrap}
+.chip{background:var(--grey);border:1px solid var(--line);padding:5px 11px;border-radius:999px;
+  font-weight:600;font-size:11.8px;color:var(--muted);white-space:nowrap}
+.chip--solid{background:var(--coral-deep);border-color:var(--coral-deep);color:#fff}
+.chip--dl{background:var(--coral);border-color:var(--coral);color:#fff;font-weight:700;
+  text-decoration:none;cursor:pointer}
+.chip--dl:hover,.chip--dl:focus{background:var(--coral-deep);border-color:var(--coral-deep);
+  color:#fff;text-decoration:none}
+.tglbtn{background:var(--grey);border:1px solid var(--line);border-radius:999px;
+  width:30px;height:30px;cursor:pointer;color:var(--muted);font-size:14px;line-height:1;
+  display:grid;place-items:center;font-family:inherit}
+.tglbtn:hover{color:var(--deep)}
+.agency{display:flex;align-items:center;padding-left:13px;border-left:1px solid var(--line)}
+.agency img{height:20px;width:auto;display:block}
+:root[data-theme="dark"] .agency img{filter:brightness(0) invert(1);opacity:.9}
 
-.shell{display:grid;grid-template-columns:266px minmax(0,1fr);gap:0;
-  max-width:1500px;margin:0 auto}
-.sidenav{position:sticky;top:var(--appbar);align-self:start;
-  height:calc(100vh - var(--appbar));overflow-y:auto;
-  padding:26px 16px 40px 22px;border-right:1px solid var(--line)}
-.sidenav h4{font-size:10.5px;letter-spacing:.1em;color:var(--muted);
-  margin-bottom:12px;font-weight:700}
-.sidenav ol{list-style:none;margin:0;padding:0;counter-reset:s}
-.sidenav li{counter-increment:s;margin:1px 0}
-.sidenav a,.toc-sheet__panel a{display:flex;gap:10px;padding:7px 10px;border-radius:8px;
-  font-size:13.2px;color:var(--muted);text-decoration:none;line-height:1.35}
-.sidenav a:hover,.sidenav a:focus,.toc-sheet__panel a:hover,.toc-sheet__panel a:focus{
-  text-decoration:none;background:var(--grey);color:var(--ink)}
+.shell{display:grid;grid-template-columns:var(--nav-w) minmax(0,1fr);gap:22px;
+  max-width:var(--maxw);margin:0 auto;padding:0 26px}
+.sidenav{position:sticky;top:calc(var(--appbar) + 16px);align-self:start;height:fit-content;
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:12px;box-shadow:var(--shadow-h);z-index:1;margin-top:20px;
+  max-height:calc(100vh - var(--appbar) - 40px);overflow-y:auto;overscroll-behavior:contain;
+  scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.sidenav::-webkit-scrollbar{width:7px}
+.sidenav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.sidenav::-webkit-scrollbar-track{background:transparent}
+.sidenav h4{font-size:10.4px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--ink-3);margin:13px 8px 4px;padding-top:10px;border-top:1px solid var(--line-soft)}
+.sidenav h4:first-child{margin-top:0;padding-top:0;border-top:none}
+.sidenav a,.toc-sheet__panel a{display:flex;align-items:center;gap:10px;padding:8px 10px;
+  border-radius:9px;color:var(--muted);font-size:13.4px;font-weight:600;line-height:1.3;
+  text-decoration:none;transition:background .15s,color .15s}
+.sidenav a:hover,.toc-sheet__panel a:hover{background:var(--grey);color:var(--deep);text-decoration:none}
+.sidenav a:focus,.toc-sheet__panel a:focus{text-decoration:none}
 .sidenav a:focus-visible,.toc-sheet__panel a:focus-visible{outline:2px solid var(--coral);outline-offset:1px}
-.sidenav a::before,.toc-sheet__panel a::before{content:counter(s,decimal-leading-zero);
-  font-variant-numeric:tabular-nums;font-size:10.5px;color:var(--coral);
-  font-weight:700;padding-top:2px}
-.sidenav a.active,.toc-sheet__panel a.active{background:var(--teal);color:#fff;font-weight:600}
-.sidenav a.active::before,.toc-sheet__panel a.active::before{color:var(--gold)}
+.sidenav a.active,.toc-sheet__panel a.active{background:var(--coral-tint);color:var(--coral-deep)}
+.sidenav a .n,.toc-sheet__panel a .n{width:24px;height:24px;border-radius:6px;
+  background:var(--grey);color:var(--ink-3);font-size:11px;font-weight:800;
+  display:grid;place-items:center;flex:none;font-variant-numeric:tabular-nums}
+.sidenav a.active .n,.toc-sheet__panel a.active .n{background:var(--coral);color:#fff}
 
 main{padding:34px 40px 90px;min-width:0}
-section{scroll-margin-top:calc(var(--appbar) + 24px);margin-bottom:52px}
+section{scroll-margin-top:calc(var(--appbar-h,var(--appbar)) + 24px);margin-bottom:52px}
 .eyebrow{font-size:10.5px;letter-spacing:.13em;color:var(--coral-deep);
   font-weight:700;margin-bottom:7px}
 h2{font-size:25px;margin-bottom:6px;letter-spacing:-.01em}
@@ -86,10 +116,10 @@ p{margin:0 0 12px}
 
 .tw{overflow-x:auto;margin:14px 0 8px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
 table{border-collapse:collapse;width:100%;font-size:13.2px;min-width:520px}
-th{background:var(--teal);color:#fff;text-align:left;padding:10px 12px;
+th{background:var(--th-bg);color:#fff;text-align:left;padding:10px 12px;
   font-weight:600;font-size:12.2px;white-space:nowrap;vertical-align:middle}
 td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
-tbody tr:nth-child(even){background:#F7F9FD}
+tbody tr:nth-child(even){background:var(--zebra)}
 td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 td.c,th.c{text-align:center}
 .pos{color:var(--green);font-weight:600} .neg{color:var(--red);font-weight:600}
@@ -148,9 +178,13 @@ details.grp .tw{margin:0;border:none;border-top:1px solid var(--line);border-rad
 
 .fab{display:none}
 @media(max-width:1040px){
-  .shell{grid-template-columns:1fr}
+  .appbar__in{padding:9px 14px;gap:9px}
+  .brand__txt small{display:none}
+  .shell{grid-template-columns:1fr;padding:0}
   .sidenav{display:none}
   main{padding:24px 18px 80px}
+  .chip[data-t]{display:none}
+  .brand img{height:26px}
   .fab{display:flex;position:fixed;right:16px;bottom:16px;z-index:70;
     background:var(--teal);color:#fff;border:none;border-radius:999px;
     padding:12px 18px;font-size:13px;font-weight:600;box-shadow:0 6px 20px rgba(0,0,0,.22);
@@ -177,25 +211,23 @@ body:has(#faz:target) .sidenav a[href="#faz"],body:has(#faz:target) .toc-sheet__
 body:has(#sozluk:target) .sidenav a[href="#sozluk"],body:has(#sozluk:target) .toc-sheet__panel a[href="#sozluk"]{background:var(--teal);color:#fff;font-weight:600}
 </style>
 </head><body>
-<header class="appbar">
-  <div class="logos">
-    <div class="logo-cell"><span>Marka</span><img class="logo-tc" src="data:image/png;base64,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" alt="Turkcell"></div>
-    <div class="logo-sep"></div>
-    <div class="logo-cell"><span>Hazırlayan</span><img class="logo-ib" src="data:image/png;base64,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" alt="Inbound"></div>
+<header class="appbar"><div class="appbar__in">
+  <div class="brand">
+    <img src="data:image/png;base64,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" alt="Turkcell">
+    <span class="brand__txt"><b>Destek Sayfaları · SEO ve GEO Önerileri</b>
+    <small>Content gap, şablon bulguları ve açılması önerilen 80 sayfa</small></span>
   </div>
-  <div class="appbar-title">Destek Sayfaları · SEO ve GEO Sayfa Önerileri<b>Analiz: 09.09.2026 · GSC: 1 Haz - 31 Ağu 2026</b></div>
-</header>
+  <div class="appbar__meta">
+    <span class="chip chip--solid">9 Eylül 2026</span>
+    <span class="chip" data-t="Search Console verisi 1 Haziran - 31 Ağustos 2026 penceresinden alınmıştır; sayfa taraması 9 Eylül 2026 tarihlidir." tabindex="0">1 Haz - 31 Ağu 2026</span>
+    <span class="chip" data-t="Bireysel destek bölümü · /destek/ altındaki 590 soru sayfası. Kurumsal destek bölümü kapsam dışıdır." tabindex="0">Yalnız /destek kapsamı</span>
+    <a class="chip chip--dl" data-dl href="#" download="Turkcell-Destek-Sayfa-Onerileri-09-09-2026.xlsx">↓ XLSX</a>
+    <button class="tglbtn" id="themeBtn" aria-label="Açık ve koyu tema arasında geçiş yap" title="Tema">◐</button>
+    <span class="agency"><img src="data:image/png;base64,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" alt="Inbound"></span>
+  </div>
+</div></header>
 <div class="shell">
-  <nav class="sidenav"><h4>İÇİNDEKİLER</h4><ol><li><a href="#ozet">Yönetici Özeti</a></li>
-<li><a href="#yapi">Mevcut Destek Yapısı</a></li>
-<li><a href="#sablon">Şablon Düzeyi Bulgular</a></li>
-<li><a href="#eslesme">Talep ve Sayfa Eşleşmesi</a></li>
-<li><a href="#tema">Tema Bazında Content Gap</a></li>
-<li><a href="#geo">AI Overview ve İlgili Sorular Katmanı</a></li>
-<li><a href="#mimari">Önerilen Sayfa Mimarisi</a></li>
-<li><a href="#promptlar">Prompt Listesi Değerlendirmesi</a></li>
-<li><a href="#faz">Öncelik ve Faz Kurgusu</a></li>
-<li><a href="#sozluk">Terim Sözlüğü</a></li></ol></nav>
+  <nav class="sidenav" id="sidenav"><h4>Durum</h4><a href="#ozet"><span class="n">01</span>Yönetici özeti</a><a href="#yapi"><span class="n">02</span>Mevcut destek yapısı</a><h4>Bulgular</h4><a href="#sablon"><span class="n">03</span>Şablon düzeyi bulgular</a><a href="#eslesme"><span class="n">04</span>Talep ve sayfa eşleşmesi</a><a href="#tema"><span class="n">05</span>Tema bazında content gap</a><a href="#geo"><span class="n">06</span>AI Overview ve İlgili Sorular</a><h4>Öneri</h4><a href="#mimari"><span class="n">07</span>Önerilen sayfa mimarisi</a><a href="#promptlar"><span class="n">08</span>Prompt listesi değerlendirmesi</a><a href="#faz"><span class="n">09</span>Öncelik ve faz kurgusu</a><h4>Ek</h4><a href="#sozluk"><span class="n">10</span>Terim sözlüğü</a></nav>
   <main>
 <section id="ozet"><div class="eyebrow">YÖNETİCİ ÖZETİ</div><h2>Destek Bölümünün Görünürlük Tablosu</h2><p class="sub">590 destek sayfası, 1 Haziran - 31 Ağustos 2026 Search Console verisi, 1.033 soru formatlı keyword ve 35 canlı SERP kesiti üzerinden değerlendirilmiştir.</p><div class="kpis"><div class="kpi green" data-t="Search Console · 1 Haziran - 31 Ağustos 2026 · /destek/ altındaki 695 adresin toplam tıklaması: 787.214" tabindex="0"><div class="n">787K</div><div class="l">Destek dizini click · 1 Haz - 31 Ağu 2026</div></div><div class="kpi " data-t="Search Console · 1 Haziran - 31 Ağustos 2026 · /destek/ altındaki adreslerin arama sonuçlarında toplam görüntülenmesi: 19.705.749" tabindex="0"><div class="n">19.7M</div><div class="l">Destek dizini impression · 1 Haz - 31 Ağu 2026</div></div><div class="kpi " data-t="Sitemap üzerinden taranan /destek/ altındaki bireysel soru sayfası sayısı. Kurumsal bölümdeki 222 sayfa dahil değildir." tabindex="0"><div class="n">590</div><div class="l">Bireysel destek sayfası · 9 Eyl 2026</div></div><div class="kpi red" data-t="9 Eylül 2026 taraması · 590 sayfanın tamamında yalnızca BreadcrumbList ve WebPage tipinde JSON-LD bulunmaktadır." tabindex="0"><div class="n">0</div><div class="l">FAQPage veya QAPage schema taşıyan sayfa</div></div><div class="kpi red" data-t="9 Eylül 2026 taraması · Cevap gövdesi, sayfa başlığı ile 'Diğer İçerikler' bloğu arasındaki metin olarak ölçülmüştür." tabindex="0"><div class="n">41</div><div class="l">Cevap uzunluğu medyanı (kelime)</div></div><div class="kpi red" data-t="9 Eylül 2026 taraması · 53 grupta toplam 125 sayfa aynı H1 başlığını taşımaktadır." tabindex="0"><div class="n">125</div><div class="l">Aynı başlığı taşıyan sayfa</div></div><div class="kpi coral" data-t="Bu çalışmada açılması önerilen destek sayfası sayısı. 41'i yeni alt bölümlere, 39'u mevcut alt bölümlere yerleşmektedir." tabindex="0"><div class="n">80</div><div class="l">Önerilen yeni sayfa</div></div><div class="kpi coral" data-t="eSIM, cihaz kaydı ve IMEI, taşınabilir internet, taahhüt ve cayma, faturaya ek cihaz." tabindex="0"><div class="n">5</div><div class="l">Açılması önerilen yeni alt bölüm</div></div></div><div class="insight">➔ Destek bölümü 1 Haz - 31 Ağu 2026 penceresinde <b>787.214 click</b> ve <b>19,7M impression</b> üretmektedir. Bu hacim, bölümü yardım alanı olmaktan çıkarıp sitenin ana organik trafik kaynaklarından biri konumuna taşımaktadır.</div><h3>Kritik tespit</h3><div class="note"><span class="tag">KRİTİK TESPİT</span>IMEI kelime ailesi 1 Haz - 31 Ağu 2026 penceresinde <b>1.160.084 impression</b> üretmekte, karşılığında <b>2.432 click</b> alınmaktadır; CTR %0,21 seviyesindedir. Talebi karşılayan tek sayfa kurumsal bölümde yer alan <a class='u' href='https://www.turkcell.com.tr/kurumsal/destek/hizmet-kanallarimiz/satis-sonrasi-destek/cihazimin-imei-kodunu-nasil-ogrenebilirim' target='_blank' rel='noopener'>/kurumsal/destek/.../cihazimin-imei-kodunu-nasil-ogrenebilirim</a> adresidir ve ortalama konum 6,83'tür. Bireysel destek altında bu konuda sayfa bulunmamaktadır.</div><h3>Dönemin öne çıkanları</h3><div class="tw"><table style="min-width:680px"><thead><tr><th></th><th data-t="✓ olumlu gelişme · ▲ dikkat gerektiren bulgu" tabindex="0"><span class="q">Bulgu</span></th></tr></thead><tbody><tr><td>✓</td><td>5G bölümü 27 sayfayla en olgun alan durumundadır; cihaz uyumluluğu, kapsama, pil ve yurt dışı kırılımları ayrı sayfalarda karşılanmaktadır. Yeni alanlar için uygulanabilir bir model sunmaktadır.</td></tr><tr><td>✓</td><td>Destek sayfası bulunan sorularda Turkcell canlı SERP'te 1-2. sıralarda yer almaktadır: 'numara taşıma ne kadar sürer' 1., 'hazır kart nedir' 1., 'tarife nasıl değiştirilir' 1., 'hat devri nasıl yapılır' 1. sıradadır.</td></tr><tr><td>▲</td><td>eSIM temasında destek payı %6,2 seviyesindedir; 238.356 impression destek dışı sayfalara düşmektedir.</td></tr><tr><td>▲</td><td>Taşınabilir internet ve Superbox temasında destek payı %28,6, mobil veri temasında %30,8 seviyesindedir.</td></tr><tr><td>▲</td><td>590 sayfanın hiçbirinde FAQPage ya da QAPage schema bulunmamaktadır.</td></tr><tr><td>▲</td><td>53 grupta toplam 125 sayfa aynı başlığı taşımaktadır; görünürlük aynı cevabın iki ya da üç adresi arasında bölünmektedir.</td></tr><tr><td>▲</td><td>Bazı sorularda talebi basın bülteni sayfaları karşılamaktadır: 'turkcell ailem gb transferi nasıl yapılır' sorgusu 4.992 impression ile medya.turkcell.com.tr adresine düşmektedir.</td></tr></tbody></table></div></section>
 <section id="yapi"><div class="eyebrow">MEVCUT YAPI</div><h2>Kategori Dağılımı ve Performans</h2><p class="sub">Bireysel destek bölümü üç seviyeli bir yapıda kurgulanmıştır: /destek/{kategori}/{alt bölüm}/{soru}. Sitemap üzerinden 590 sayfa taranmıştır.</p><div class="tw"><table style="min-width:640px"><thead><tr><th data-t="/destek/ altındaki birinci seviye kategori adı" tabindex="0"><span class="q">Kategori</span></th><th class="n" data-t="Sitemap üzerinden taranan, bu kategoriye ait soru sayfası sayısı · 9 Eyl 2026" tabindex="0"><span class="q">Sayfa</span></th><th class="n" data-t="Search Console · 1 Haz - 31 Ağu 2026 · kategorinin tüm sayfalarının toplam tıklaması" tabindex="0"><span class="q">Click</span></th><th class="n" data-t="Search Console · 1 Haz - 31 Ağu 2026 · kategorinin arama sonuçlarında toplam görüntülenmesi" tabindex="0"><span class="q">Impression</span></th><th class="n" data-t="Kategorinin toplam tıklamasının sayfa sayısına bölümü · 1 Haz - 31 Ağu 2026" tabindex="0"><span class="q">Sayfa başına click</span></th></tr></thead><tbody><tr><td>online-alisveris</td><td class="n">103</td><td class="n">11.874</td><td class="n">421.562</td><td class="n">115</td></tr><tr><td>hattiniz</td><td class="n">72</td><td class="n">98.889</td><td class="n">2.544.458</td><td class="n">1.373</td></tr><tr><td>turkcellli-olmak</td><td class="n">57</td><td class="n">38.525</td><td class="n">1.488.681</td><td class="n">675</td></tr><tr><td>financell</td><td class="n">55</td><td class="n">11.023</td><td class="n">548.971</td><td class="n">200</td></tr><tr><td>wiyo</td><td class="n">54</td><td class="n">1.053</td><td class="n">28.614</td><td class="n">19</td></tr><tr><td>islem-merkezi</td><td class="n">48</td><td class="n">47.886</td><td class="n">986.232</td><td class="n">997</td></tr><tr><td>servisler-ve-internet</td><td class="n">41</td><td class="n">29.363</td><td class="n">1.955.537</td><td class="n">716</td></tr><tr><td>5g</td><td class="n">28</td><td class="n">4.021</td><td class="n">338.482</td><td class="n">143</td></tr><tr><td>tarife-ve-paketler</td><td class="n">26</td><td class="n">26.029</td><td class="n">1.294.422</td><td class="n">1.001</td></tr><tr><td>dijitalde-turkcellli-olmak</td><td class="n">24</td><td class="n">26.675</td><td class="n">1.183.746</td><td class="n">1.111</td></tr><tr><td>kampanya</td><td class="n">22</td><td class="n">3.754</td><td class="n">547.675</td><td class="n">170</td></tr><tr><td>4-5g</td><td class="n">18</td><td class="n">2.873</td><td class="n">210.800</td><td class="n">159</td></tr><tr><td>yurtdisi</td><td class="n">15</td><td class="n">11.264</td><td class="n">306.030</td><td class="n">750</td></tr><tr><td>yenilenmis-cihazlar</td><td class="n">14</td><td class="n">54</td><td class="n">1.720</td><td class="n">3</td></tr><tr><td>hizmet-kanallarimiz</td><td class="n">11</td><td class="n">42.745</td><td class="n">1.560.048</td><td class="n">3.885</td></tr><tr><td>yardim-araclari</td><td class="n">2</td><td class="n">4.677</td><td class="n">95.327</td><td class="n">2.338</td></tr></tbody></table></div><p class="cap">Kaynak: Search Console · 1 Haz - 31 Ağu 2026 · Sitemap taraması 09.09.2026</p><div class="insight">➔ Sayfa hacmi ile talep birbirinden ayrışmaktadır. <b>Sigorta (wiyo) ve Financell birlikte 107 sayfa</b> taşırken, hedef temalarla doğrudan ilişkili <b>servisler ve internet 40, yurt dışı 14 sayfada</b> kalmaktadır. Sayfa başına click bakımından yardım araçları ve hizmet kanalları öne çıkmaktadır.</div><div class="note"><span class="tag">YÖNTEM</span>Kategori dağılımı sitemap üzerinden alınmış, performans değerleri sayfa adresi eşleştirmesiyle Search Console'dan çekilmiştir. Kurumsal bölümdeki 222 destek sayfası bu tabloya dahil değildir; ilgili bulgular ayrıca belirtilmiştir.</div></section>
@@ -216,6 +248,12 @@ body:has(#sozluk:target) .sidenav a[href="#sozluk"],body:has(#sozluk:target) .to
   var ids=["ozet", "yapi", "sablon", "eslesme", "tema", "geo", "mimari", "promptlar", "faz", "sozluk"];
   var appbar=document.querySelector('.appbar');
   function abH(){return appbar?appbar.getBoundingClientRect().height:64;}
+  function abSenkron(){
+    document.documentElement.style.setProperty('--appbar-h', abH()+'px');
+  }
+  abSenkron();
+  window.addEventListener('resize',abSenkron);
+  if(window.ResizeObserver && appbar){ new ResizeObserver(abSenkron).observe(appbar); }
   function offset(){return abH()+24;}
   function links(){return Array.prototype.slice.call(
     document.querySelectorAll('.sidenav a[href^="#"],.toc-sheet__panel a[href^="#"]'));}
@@ -286,8 +324,8 @@ body:has(#sozluk:target) .sidenav a[href="#sozluk"],body:has(#sozluk:target) .to
   if(fab) fab.addEventListener('click',function(){
     if(document.getElementById('tocSheet')) return;
     var d=document.createElement('div'); d.className='toc-sheet'; d.id='tocSheet';
-    d.innerHTML='<div class="toc-sheet__panel"><h4>İÇİNDEKİLER</h4>'+
-      document.querySelector('.sidenav ol').outerHTML+'</div>';
+    d.innerHTML='<div class="toc-sheet__panel">'+
+      document.getElementById('sidenav').innerHTML+'</div>';
     d.addEventListener('click',function(e){if(e.target===d) d.remove();});
     document.body.appendChild(d);
     spy();
@@ -318,6 +356,31 @@ body:has(#sozluk:target) .sidenav a[href="#sozluk"],body:has(#sozluk:target) .to
     if(el){ ttShow(el); setTimeout(ttHide,2600); } else ttHide();
   },{passive:true});
   window.addEventListener('scroll',ttHide,{passive:true});
+
+  // Tema anahtari: secim tarayicida saklanir
+  var root=document.documentElement, tb=document.getElementById('themeBtn');
+  function temaUygula(v){
+    if(v==='dark') root.setAttribute('data-theme','dark');
+    else root.removeAttribute('data-theme');
+    if(tb) tb.textContent = v==='dark' ? '◑' : '◐';
+  }
+  var kayit=null;
+  try{ kayit=localStorage.getItem('rapor-tema'); }catch(e){}
+  temaUygula(kayit || 'light');
+  if(tb) tb.addEventListener('click',function(){
+    var yeni = root.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
+    temaUygula(yeni);
+    try{ localStorage.setItem('rapor-tema',yeni); }catch(e){}
+  });
+
+  // Ust bardaki XLSX rozeti, gomulu Excel'i tasiyan baglantidan beslenir
+  var kaynak=document.querySelector('a.dl[href^="data:"]');
+  if(kaynak){
+    Array.prototype.forEach.call(document.querySelectorAll('[data-dl]'),function(a){
+      a.setAttribute('href',kaynak.getAttribute('href'));
+      a.setAttribute('download',kaynak.getAttribute('download'));
+    });
+  }
 })();
 </script>
 </body></html>
