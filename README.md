@@ -9,7 +9,7 @@ www.turkcell.com.tr/destek bölümünün görünürlük değerlendirmesi, açıl
 | Dosya | Açıklama |
 |---|---|
 | `index.html` | HTML rapor · 14 bölüm · önerilen 51 yeni sayfanın ve 58 güçlendirme maddesinin tamamı açılır gruplar halinde listeli · Excel dosyası rapor içinden indirilebilir |
-| `Turkcell-Destek-Sayfa-Onerileri-22-09-2026.xlsx` | 10 sekme: Özet · Talepler · Yeni Sayfa Önerileri · Mevcut Sayfa Güçlendirme · Sitemap Dışı Adresler · Doğrulanacak Bilgiler · Mükerrer Sayfalar · Rakip Karşılaştırması · Prompt Eşleştirme · Terim Sözlüğü |
+| `Turkcell-Destek-Sayfa-Onerileri-22-09-2026.xlsx` | 10 sekme: Özet · Talepler · Yeni Sayfa Önerileri · Mevcut Sayfa Güçlendirme · Sitemap Dışı Adresler · Doğrulanacak Bilgiler · Duplicate Adresler · Rakip Karşılaştırması · Prompt Eşleştirme · Terim Sözlüğü |
 
 ## Kapsam
 
@@ -22,7 +22,7 @@ www.turkcell.com.tr/destek bölümünün görünürlük değerlendirmesi, açıl
 
 - Destek adresleri 1 Eyl 2025 - 31 Ağu 2026 penceresinde bireysel tarafta yaklaşık 4,0M click ve 83,0M impression üretmektedir.
 - IMEI sorgu ailesi aynı pencerede 5.239.883 impression üretmekte, talebin neredeyse tamamı kurumsal bölümdeki tek sayfaya düşmektedir.
-- Yayında olmayan destek adresleri 404 yerine 200 dönüp başka bir sayfanın içeriğini göstermekte ve canonical'i kendi adreslerine vermektedir; Search Console'da bu davranışı gösteren 30 adres bulunmaktadır.
+- Yayında olmayan destek adresleri 404 yerine 200 dönüp başka bir sayfanın içeriğini göstermekte ve canonical'i kendi adreslerine vermektedir; Search Console'da bu davranışı gösteren 28 adres bulunmaktadır (Soft 404 - tekrar eden sayfalar).
 - Destek sitemap'i bazı yardım araçlarını ve soru sayfalarını kapsamamaktadır.
 - Destek sayfalarının hiçbirinde soru-cevap schema işaretlemesi (FAQPage) bulunmamaktadır.
 
