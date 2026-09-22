@@ -24,7 +24,7 @@ www.turkcell.com.tr/destek bölümünün görünürlük değerlendirmesi, açıl
 - IMEI sorgu ailesi aynı pencerede 5.239.883 impression üretmekte, talebin neredeyse tamamı kurumsal bölümdeki tek sayfaya düşmektedir.
 - Yayında olmayan destek adresleri 404 yerine 200 dönüp başka bir sayfanın içeriğini göstermekte ve canonical'i kendi adreslerine vermektedir; Search Console'da bu davranışı gösteren 30 adres bulunmaktadır.
 - Destek sitemap'i bazı yardım araçlarını ve soru sayfalarını kapsamamaktadır.
-- Destek sayfalarının hiçbirinde FAQPage ya da QAPage schema bulunmamaktadır.
+- Destek sayfalarının hiçbirinde soru-cevap schema işaretlemesi (FAQPage) bulunmamaktadır.
 
 ## Öneri
 
