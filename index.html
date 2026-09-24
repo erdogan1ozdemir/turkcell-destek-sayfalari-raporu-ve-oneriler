@@ -481,21 +481,17 @@ onerilen:/destek/hattiniz/taahhut-ve-cayma/ · 3 sayfa</pre><p class="etk">Kapsa
   },{passive:true});
   window.addEventListener('scroll',ttHide,{passive:true});
 
-  // Tema anahtari: secim tarayicida saklanir
+  // Tema anahtari: rapor her acilista acik temayla baslar; anahtar yalnizca o oturumda gecerli
   var root=document.documentElement, tb=document.getElementById('themeBtn');
   function temaUygula(v){
     if(v==='dark') root.setAttribute('data-theme','dark');
     else root.removeAttribute('data-theme');
     if(tb) tb.textContent = v==='dark' ? '◑' : '◐';
   }
-  var kayit=null;
-  try{ kayit=localStorage.getItem('rapor-tema'); }catch(e){}
-  var sistem = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-  temaUygula(kayit || sistem);
+  try{ localStorage.removeItem('rapor-tema'); }catch(e){}
+  temaUygula('light');
   if(tb) tb.addEventListener('click',function(){
-    var yeni = root.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
-    temaUygula(yeni);
-    try{ localStorage.setItem('rapor-tema',yeni); }catch(e){}
+    temaUygula(root.getAttribute('data-theme')==='dark' ? 'light' : 'dark');
   });
 
 
