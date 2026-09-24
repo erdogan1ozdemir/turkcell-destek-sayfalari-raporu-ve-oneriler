@@ -8,7 +8,7 @@ www.turkcell.com.tr/destek bölümünün görünürlük değerlendirmesi, açıl
 
 | Dosya | Açıklama |
 |---|---|
-| `index.html` | HTML rapor · 14 bölüm · önerilen 51 yeni sayfanın ve 58 güçlendirme maddesinin tamamı açılır gruplar halinde listeli · Excel dosyası rapor içinden indirilebilir |
+| `index.html` | HTML rapor · 14 bölüm · önerilen 52 yeni sayfanın ve 60 güçlendirme maddesinin tamamı açılır gruplar halinde listeli · Excel dosyası rapor içinden indirilebilir |
 | `Turkcell-Destek-Sayfa-Onerileri-22-09-2026.xlsx` | 10 sekme: Özet · Talepler · Yeni Sayfa Önerileri · Mevcut Sayfa Güçlendirme · Sitemap Dışı Adresler · Doğrulanacak Bilgiler · Duplicate Adresler · Rakip Karşılaştırması · Prompt Eşleştirme · Terim Sözlüğü |
 
 ## Kapsam
@@ -28,4 +28,4 @@ www.turkcell.com.tr/destek bölümünün görünürlük değerlendirmesi, açıl
 
 ## Öneri
 
-51 yeni destek sayfası, 58 mevcut sayfa güçlendirme maddesi, 14 teknik ve on-page talep maddesi ve markayla doğrulanması önerilen 11 bilgi.
+52 yeni destek sayfası, 60 mevcut sayfa güçlendirme maddesi, 14 teknik ve on-page talep maddesi ve markayla doğrulanması önerilen 11 bilgi.
